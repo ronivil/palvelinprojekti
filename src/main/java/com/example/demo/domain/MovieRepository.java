@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface AlbumiRepository extends CrudRepository<Albumi, Long> {
+public interface MovieRepository extends CrudRepository<Movie, Long> {
 
-	List<Albumi> findByName(String string);
+	List<Movie> findByName(String string);
     
 }

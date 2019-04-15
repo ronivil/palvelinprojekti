@@ -10,28 +10,28 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Kappale {
+public class Genre {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-	private Long kappaleid;
+	private Long genreid;
 	private String name;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "kappaleid")
-	private List<Albumi> albumit;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "genre")
+	private List<Movie> movies;
 	
-	public Kappale() {}
+	public Genre() {}
 	
-	public Kappale(String name) {
+	public Genre(String name) {
 		super();
 		this.name = name;
 	}
-
-	public Long getKappaleid() {
-		return kappaleid;
+	
+	public Long getGenreid() {
+		return genreid;
 	}
 
-	public void setKappaleid(Long kappaleid) {
-		this.kappaleid = kappaleid;
+	public void setGenreid(Long genreid) {
+		this.genreid = genreid;
 	}
 
 	public String getName() {
@@ -42,16 +42,16 @@ public class Kappale {
 		this.name = name;
 	}
 
-	public List<Albumi> getAlbumit() {
-		return albumit;
+	public List<Movie> getMovies() {
+		return movies;
 	}
 
-	public void setAlbumit(List<Albumi> albumit) {
-		this.albumit = albumit;
+	public void setMovies(List<Movie> movies) {
+		this.movies = movies;
 	}
 
 	@Override
 	public String toString() {
-		return "Kappale [kappaleid=" + kappaleid + ", name=" + name + "]";
+		return name;
 	}
 }

@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface KappaleRepository extends CrudRepository<Kappale, Long> {
+public interface GenreRepository extends CrudRepository<Genre, Long> {
 
-	List<Kappale> findByName(String string);
+	List<Genre> findByName(String string);
     
 }
