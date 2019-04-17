@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.example.demo.domain.Description;
 import com.example.demo.domain.Genre;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -26,6 +27,11 @@ public class Movie {
     @JoinColumn(name = "genreid")
     private Genre genre;
 	
+	@ManyToOne
+	@JsonIgnore
+	@JoinColumn(name = "descriptionid")
+	private Description description;
+	
 	public Genre getGenre() {
 		return genre;
 	}
@@ -34,17 +40,26 @@ public class Movie {
 		this.genre = genre;
 	}
 
+	public Description getDescription() {
+		return description;
+	}
+
+	public void setDescription(Description description) {
+		this.description = description;
+	}
+
 	public Movie() {
 		super();
 		this.name = null;
 		this.publishYear = 0;
 	}
 	
-	public Movie(String name, int publishYear, Genre genre) {
+	public Movie(String name, int publishYear, Genre genre, Description description) {
 		super();
 		this.name = name;
 		this.publishYear = publishYear;	
 		this.genre = genre;
+		this.description = description;
 	}
 
 	public Long getId() {
@@ -73,8 +88,8 @@ public class Movie {
 	
 	@Override
 	public String toString() {
-		if (this.genre != null)
-			return "Movie [id=" + id + ", name=" + name + ", publishYear=" + publishYear + "genre =" + this.getGenre() + "]";		
+		if (this.genre != null && this.description != null)
+			return "Movie [id=" + id + ", name=" + name + ", publishYear=" + publishYear + "genre =" + this.getGenre() + "description =" + this.getDescription() + "]";		
 		else
 			return "Movie [id=" + id + ", name=" + name + ", publishYear=" + publishYear + "]";
 	}

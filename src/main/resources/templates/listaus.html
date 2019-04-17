@@ -9,6 +9,11 @@
 <body>
 	<h1 align="center" th:inline="text">Welcome to your movies [[${#httpServletRequest.remoteUser}]]</h1>
 	
+	<script>
+    		function popup() {
+        		window.open("/TietoController/showdes", 'window', 'width=200,height=100');
+    		}
+		</script>
 	<table class="table table-striped">
 		<tr>
 			<th>Id</th>
@@ -23,8 +28,7 @@
 			<td th:text="${movie.id}" ></td>
 			<td th:text="${movie.name}"></td>
 			<td th:text="${movie.publishYear}"></td>
-			<td th:text="${movie.genre}"></td> 
-			<td><a class="btn btn-success">Description</a></td>
+			<td th:text="${movie.genre}"></td>
 			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${movie.id})}" class="btn btn-danger">Delete</a></td>
 			
 		</tr>
@@ -35,5 +39,8 @@
 		</form>
 		  <a href="/add" class="btn btn-success">Add movie</a>  
 	</div>
+	<div class="popup" onclick="popup()">Description
+  			<span class="popuptext" id="myPopup"></span></div>
+			<td><a class="btn btn-success">Description</a></td>
 	</body>
 </html>

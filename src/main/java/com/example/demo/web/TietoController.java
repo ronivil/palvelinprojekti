@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.domain.Movie;
+import com.example.demo.domain.Description;
 import com.example.demo.domain.GenreRepository;
 import com.example.demo.domain.MovieRepository;
 
@@ -72,5 +73,12 @@ public class TietoController {
     public String deleteMovie(@PathVariable("id") Long movieId, Model model) {
     	movieRepository.deleteById(movieId);
         return "redirect:../movies";
-    }     
+    }
+    //show a description of the movie
+    @RequestMapping(value = "/showdes", method = RequestMethod.GET)
+    public String description(Model model) throws Exception {
+        Description movieDes = new Description();
+        model.addAttribute("description", movieDes);
+        return "description";
+    }
 }
